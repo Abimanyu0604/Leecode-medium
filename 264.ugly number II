@@ -1,0 +1,17 @@
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        c = 0
+        i = 1
+        while True:
+            temp = i
+            while(temp % 2 == 0):
+                temp = temp // 2
+            while(temp % 3 == 0):
+                temp = temp // 3
+            while(temp % 5 == 0):
+                temp = temp//5
+            if temp==1:
+                c+=1
+                if c==n:
+                    return i
+            i+=1

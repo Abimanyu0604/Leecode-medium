@@ -1,0 +1,15 @@
+class Solution:
+    def maxScore(self, a: List[int], b: List[int]) -> int:
+        dp = {}
+        def solve(i, j):
+            if i == 4:
+                return 0
+            if j == len(b):
+                return float('-inf')
+            if (i, j) in dp:
+                return dp[(i, j)]
+            s = solve(i, j + 1)
+            t = a[i] * b[j] + solve(i + 1, j + 1)
+            dp[(i, j)] = max(s, t)
+            return dp[(i, j)]
+        return solve(0, 0)
